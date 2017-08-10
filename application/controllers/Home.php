@@ -86,7 +86,7 @@ class Home extends CI_Controller
 
     $data = array();
     foreach ($hasil as $res) {
-      if(time() != $res['expired']){
+      if(time() <= $res['expired']){
         $row = array();
         $row[] = $res['id'];
         $row[] = "<a href=".site_url('Direct/path/'.$res['code'].'').">".$res['code']."</a>";
