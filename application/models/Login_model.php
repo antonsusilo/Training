@@ -17,7 +17,14 @@ class Login_model extends CI_Model
           return $query->num_rows();
      }
 
-     function reg_user($usr, $pwd, $email,$fn, $ln,$cr)
+     function get_all_user($usr, $pwd)
+     {
+          $sql = "select * from Users where username = '" . $usr . "' and password = '" . $pwd . "'";
+          $query = $this->db->query($sql);
+          return $query->result_array();
+     }
+
+     function reg_user($usr, $pwd, $email, $fn, $ln,$cr)
      {
        $data = array(
          'username' => $usr,

@@ -24,7 +24,7 @@
     <div class="container">
       <?php
           $attributes = array("class" => "form-horizontal", "id" => "loginform", "name" => "loginform", "method" => "POST");
-          echo form_open("Login/index", $attributes);?>
+          echo form_open("login/index", $attributes);?>
 
   <h5>Username</h5>
 <input type="text" id="username" name="username" value="" size="50" />

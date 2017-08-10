@@ -39,13 +39,21 @@ class Login extends CI_Controller
                     //check if username and password is correct
                     //echo($this->input->post("username"));
                     $usr_result = $this->login_model->get_user($this->input->post("username"), $this->input->post("password"));
+                    $result = $this->login_model->get_all_user($this->input->post("username"), $this->input->post("password"));
                     if ($usr_result > 0) //active user record is present
                     {
                          //set the session variables
-                         $sessiondata = array(
-                              'username' => $username,
-                              'loginuser' => TRUE
-                         );
+                         foreach ($result as $row) {
+                           $sessiondata = array(
+                                'id' => $row['id'],
+                                'username' => $row['username'],
+                                'email' => $row['email'],
+                                'first_name' => $row['first_name'],
+                                'last_name' => $row['$last_name'],
+                                'loginuser' => TRUE
+                           );
+                         }
+
                          $this->session->set_userdata($sessiondata);
                          redirect("home/index");
                     }
@@ -60,6 +68,11 @@ class Login extends CI_Controller
                     redirect('gagal');
                }
           }
+     }
+
+     public function logout(){
+       $this->session->sess_destroy();
+       $this->load->view('login_page.php');
      }
 
 }?>
