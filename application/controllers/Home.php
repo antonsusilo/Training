@@ -31,6 +31,9 @@ class Home extends CI_Controller
    }
    else
    {
+     if (!preg_match("~^(?:f|ht)tps?://~i", $website)) {
+       $website = "http://" . $website;
+     }
       $arr = str_split($website);
       $res = [];
       foreach ($res as $key => $value) {
