@@ -123,7 +123,9 @@ class Home extends CI_Controller
     $data = array();
     foreach ($hasil as $res) {
       $row = array();
-      $row[] = date('d M Y', $res['time']);
+      date_default_timezone_set('Asia/Jakarta');
+
+      $row[] = date('d M Y H:i:s', $res['time']);
       $row[] = $res['ip'];
       $row[] = $res['browser'];
       //$row[] = "<a href=".base_url('index.php/Home/detailDataTable/'.$res['id'].'').">View</a>";
