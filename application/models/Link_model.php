@@ -16,40 +16,38 @@ class Link_model extends CI_Model{
       'expired' => $ex
     );
 
-    $this->db->insert('Links', $data);
+    $this->db->insert('links', $data);
 
   }
 
   public function get_entry()
   {
-    $sql = "select * from Links";
-    $query = $this->db->query($sql);
+
+    $query = $this->db->get("links");
     return $query->result_array();
   }
 
   public function getURL($shorten)
   {
-    $query = $this->db->get_where('Links', array('code' => $shorten));
+    $query = $this->db->get_where('links', array('code' => $shorten));
     return $query->result_array();
   }
 
   public function getURLbyID($id)
   {
-    $query = $this->db->get_where('Links', array('id' => $id));
+    $query = $this->db->get_where('links', array('id' => $id));
     return $query->result_array();
   }
 
   public function count_all()
   {
-    $sql = "select * from Links";
-    $query = $this->db->query($sql);
+    $query = $this->db->get("links");
     return $query->num_rows();
   }
 
   public function count_filtered()
   {
-    $sql = "select * from Links";
-    $query = $this->db->query($sql);
+    $query = $this->db->get("links");
     return $query->num_rows();
   }
 }

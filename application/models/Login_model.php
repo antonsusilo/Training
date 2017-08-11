@@ -12,15 +12,14 @@ class Login_model extends CI_Model
      //get the username & password from tbl_usrs
      function get_user($usr, $pwd)
      {
-          $sql = "select * from Users where username = '" . $usr . "' and password = '" . $pwd . "'";
-          $query = $this->db->query($sql);
+
+          $query = $this->db->get_where('users', array('username' => $usr, 'password' => $pwd));
           return $query->num_rows();
      }
 
      function get_all_user($usr, $pwd)
      {
-          $sql = "select * from Users where username = '" . $usr . "' and password = '" . $pwd . "'";
-          $query = $this->db->query($sql);
+          $query = $this->db->get_where('users', array('username' => $usr, 'password' => $pwd));
           return $query->result_array();
      }
 
@@ -35,7 +34,7 @@ class Login_model extends CI_Model
          'created' => $cr
        );
 
-       $this->db->insert('Users', $data);
+       $this->db->insert('users', $data);
 
      }
 }?>

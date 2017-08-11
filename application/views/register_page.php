@@ -1,31 +1,7 @@
-<html>
-  <head>
-    <title>Training</title>
-    <link rel="stylesheet" href="https://bootswatch.com/flatly/bootstrap.min.css">
-
-  </head>
-  <body>
-    <h3>Pendaftaran</h3>
-    <nav class="navbar anvbar-inverse">
-      <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">Training</a>
-        </div>
-        <div id="navbar">
-          <ul class="nav navbar-nav">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Blog</a></li>
-          </ul>
-
-        </div>
-      </div>
-    </nav>
-
-    <div class="container">
-      <?php
-          $attributes = array("class" => "form-horizontal", "id" => "registerform", "name" => "registerform", "method" => "POST");
-          echo form_open("Register/daftar", $attributes);?>
+<?php
+$this->load->view('template/header.php');
+$attributes = array("class" => "form-horizontal", "id" => "registerform", "name" => "registerform", "method" => "POST");
+echo form_open("Register/daftar", $attributes);?>
 
   <h5>Username</h5>
 <input type="text" id="username" name="username" value="" size="50" />
@@ -45,7 +21,9 @@
 <div><input id="btn_daftar" name="btn_daftar" type="submit" value="Daftar" /></div>
 
 <?php echo form_close(); ?>
-          <?php echo $this->session->flashdata('msg'); ?>
+<?php echo $this->session->flashdata('msg');
+$this->load->view('template/footer.php');
+?>
 </div>
 
   </body>

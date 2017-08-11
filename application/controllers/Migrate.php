@@ -7,10 +7,12 @@ class Migrate extends CI_Controller
         {
                 $this->load->library('migration');
 
-                if ($this->migration->current() === FALSE)
+                if ($this->migration->latest() === FALSE)
                 {
                         show_error($this->migration->error_string());
                 }
+
+            		$this->load->view('login_page');
         }
 
 }

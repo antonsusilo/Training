@@ -60,12 +60,12 @@ class Login extends CI_Controller
                     else
                     {
                          $this->session->set_flashdata('msg', '<div class="alert alert-danger text-center">Invalid username and password!</div>');
-                         redirect('kosong');
+                         $this->load->view('login_page.php');
                     }
                }
                else
                {
-                    redirect('gagal');
+                    $this->load->view('login_page.php');
                }
           }
      }
